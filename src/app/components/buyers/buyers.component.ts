@@ -5,6 +5,8 @@ import { AppSettings } from "src/app/app.settings";
 import { Subject } from 'rxjs';
 import { ApiBuyersService } from 'src/app/services/api-buyers.service';
 import Swal from 'sweetalert2';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-buyers',
@@ -12,7 +14,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./buyers.component.css']
 })
 export class BuyersComponent implements OnInit {
-  
+  faPlus=faPlus;
   dtOptions: DataTables.Settings = {};
   buyersList: Buyer[] = [];
   dtTrigger: Subject<any> = new Subject<any>();

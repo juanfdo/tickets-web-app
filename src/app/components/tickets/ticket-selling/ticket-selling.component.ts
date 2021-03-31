@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { Select2OptionData } from 'ng-select2';
 import { Options } from 'select2';
 import { Location } from '@angular/common'
+import { faSave, faWindowClose} from '@fortawesome/free-solid-svg-icons';
 
 import { TicketXBuyer } from "../../../models/ticket-x-uyer";
 import { Ticket } from 'src/app/models/ticket';
@@ -19,6 +20,8 @@ import { AvailableTickets } from 'src/app/models/available-tickets';
   styleUrls: ['./ticket-selling.component.css']
 })
 export class TicketSellingComponent implements OnInit {
+  faSave=faSave;
+  faWindowClose=faWindowClose;
   public options: Options;
   public select2Data: Array<Select2OptionData>;
 

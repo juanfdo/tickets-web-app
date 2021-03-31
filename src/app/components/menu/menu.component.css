@@ -1,0 +1,15 @@
+.bg-light {
+  background-color: darkslateblue !important;
+}
+
+a{
+  color: lightgray !important;
+}
+
+a:hover, a.navbar-brand:hover{
+  color: gray !important;
+}
+
+a.navbar-brand{
+  color: whitesmoke !important;
+}

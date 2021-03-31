@@ -45,8 +45,8 @@
       </div>
 
       <div class="center">
-        <button type="submit" class="btn btn-success">Guardar</button>
-        <button type="button" class="btn btn-danger" (click)="onCancel(); ticketForm.reset()">Cancelar</button>
+        <button type="submit" class="btn btn-success mr-1">Guardar <fa-icon [icon]="faSave"></fa-icon></button>
+        <button type="button" class="btn btn-danger btn-danger ml-1" (click)="onCancel(); ticketForm.reset()"><fa-icon [icon]="faWindowClose"></fa-icon> Cancelar</button>
       </div>
 
     </form>

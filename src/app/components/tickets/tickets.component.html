@@ -1,6 +1,6 @@
 
 <div class="container" [hidden]="!ready">
-<a class="btn btn-success add-tickets" href="/tickets/registration">Agregar</a>
+<a class="btn btn-success add-tickets" href="/tickets/registration">Agregar <fa-icon [icon]="faPlus"></fa-icon></a>
 <div class="row m-4">
   <div class="col"><h2>Listado de boletas</h2></div>
 </div>
@@ -18,7 +18,7 @@
       <td>{{ ticket.tic_event_name }}</td>
       <td>{{ ticket.tic_quantity }}</td>
       <td>{{ ticket.tic_sold }}</td>
-      <td><a class="btn btn-primary" href="tickets/{{ ticket.id }}/selling">Asignar</a></td>
+      <td><a class="btn btn-primary" href="tickets/{{ ticket.id }}/selling"><fa-icon [icon]="faUserPlus"></fa-icon> Asignar</a></td>
     </tr>
   </tbody>
   <tbody *ngIf="ticketsList?.length == 0">

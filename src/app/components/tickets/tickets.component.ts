@@ -4,6 +4,7 @@ import { Ticket } from 'src/app/models/ticket';
 import { AppSettings } from "src/app/app.settings";
 import { Subject } from 'rxjs';
 import { ApiTicketsService } from 'src/app/services/api-tickets.service';
+import { faPlus, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-tickets',
@@ -11,7 +12,9 @@ import { ApiTicketsService } from 'src/app/services/api-tickets.service';
   styleUrls: ['./tickets.component.css']
 })
 export class TicketsComponent implements OnInit {
-  
+  faPlus = faPlus;
+  faUserPlus = faUserPlus;
+
   dtOptions: DataTables.Settings = {};
   ticketsList: Ticket[] = [];
   dtTrigger: Subject<any> = new Subject<any>();

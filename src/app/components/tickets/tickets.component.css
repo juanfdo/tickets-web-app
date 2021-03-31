@@ -12,3 +12,7 @@ div.row{
   align-items: center;
   height: 10em;
 }
+
+tbody tr:hover{
+  background: linear-gradient(0deg, rgba(2,0,36,0.25) 0%, rgba(106,90,205,0.25) 2%, rgba(106,90,205,0) 100%);
+}

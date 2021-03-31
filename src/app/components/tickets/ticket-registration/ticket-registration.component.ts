@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiTicketsService } from 'src/app/services/api-tickets.service';
 import Swal from 'sweetalert2';
 import { Location } from '@angular/common'
+import { faSave, faWindowClose} from '@fortawesome/free-solid-svg-icons';
 
 import { Ticket } from "../../../models/ticket";
 
@@ -13,6 +14,8 @@ import { Ticket } from "../../../models/ticket";
   styleUrls: ['./ticket-registration.component.css']
 })
 export class TicketRegistrationComponent implements OnInit {
+  faSave=faSave;
+  faWindowClose=faWindowClose;
 
   ticket: Ticket = {
     id: null,

@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiBuyersService } from 'src/app/services/api-buyers.service';
 import Swal from 'sweetalert2';
 import { Location } from '@angular/common'
+import { faSave, faWindowClose} from '@fortawesome/free-solid-svg-icons';
+
 
 import { Buyer } from "../../../models/buyer";
 
@@ -14,7 +16,8 @@ import { Buyer } from "../../../models/buyer";
 })
 
 export class BuyerRegistrationComponent implements OnInit {
-
+  faSave=faSave;
+  faWindowClose=faWindowClose;
   buyer: Buyer = {
     id: null,
     buy_id_number: null,
