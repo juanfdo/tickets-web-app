@@ -19,8 +19,8 @@ export class ApiBuyersService {
   url: string = AppSettings.API_ENDPOINT + "buyers/";
   constructor(private _http: HttpClient) { }
 
-  getBuyers(): Observable<Buyer>{
-    return this._http.get<Buyer>(this.url);
+  getBuyers(): Observable<Buyer[]>{
+    return this._http.get<Buyer[]>(this.url);
   }
 
   addBuyer(buyer: Buyer): Observable<Buyer>{
