@@ -5,6 +5,7 @@ import { ApiTicketsService } from 'src/app/services/api-tickets.service';
 import Swal from 'sweetalert2';
 import { Select2OptionData } from 'ng-select2';
 import { Options } from 'select2';
+import { Location } from '@angular/common'
 
 import { TicketXBuyer } from "../../../models/ticket-x-uyer";
 import { Ticket } from 'src/app/models/ticket';
@@ -112,9 +113,12 @@ export class TicketSellingComponent implements OnInit {
     })
   }
 
-  cancel() {}
+  onCancel(){
+    this.location.back();
+  }
 
   constructor(
+    private location: Location,
     private apiBuyersService: ApiBuyersService,
     private apiTicketsService: ApiTicketsService,
     private formBuilder: FormBuilder,

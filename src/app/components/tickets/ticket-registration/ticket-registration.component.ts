@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiTicketsService } from 'src/app/services/api-tickets.service';
 import Swal from 'sweetalert2';
+import { Location } from '@angular/common'
 
 import { Ticket } from "../../../models/ticket";
 
@@ -79,9 +80,12 @@ export class TicketRegistrationComponent implements OnInit {
     })
   }
 
-  cancel() {}
+  onCancel(){
+    this.location.back();
+  }
 
   constructor(
+    private location: Location,
     private apiTicketsService: ApiTicketsService,
     private formBuilder: FormBuilder,
     private router: Router

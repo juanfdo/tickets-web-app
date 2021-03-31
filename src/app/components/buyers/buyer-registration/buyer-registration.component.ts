@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiBuyersService } from 'src/app/services/api-buyers.service';
 import Swal from 'sweetalert2';
+import { Location } from '@angular/common'
 
 import { Buyer } from "../../../models/buyer";
 
@@ -79,9 +80,12 @@ export class BuyerRegistrationComponent implements OnInit {
     })
   }
 
-  cancel() {}
+  onCancel(){
+    this.location.back();
+  }
 
   constructor(
+    private location: Location,
     private apiBuyersService: ApiBuyersService,
     private formBuilder: FormBuilder,
     private router: Router
