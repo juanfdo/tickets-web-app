@@ -1,1 +1,30 @@
-<p>buyers works!</p>
+<div class="container" [hidden]="!ready">
+<a class="btn btn-success add-buyers" href="/buyers/registration">Agregar</a>
+<div class="row m-4">
+  <div class="col"><h2>Listado de compradores</h2></div>
+</div>
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+  <thead>
+    <tr>
+      <th>Número de id.</th>
+      <th>Nombre</th>
+      <th>Apellido</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="buyersList?.length != 0">
+    <tr *ngFor="let buyer of buyersList">
+      <td>{{ buyer.buy_id_number }}</td>
+      <td>{{ buyer.buy_first_name }}</td>
+      <td>{{ buyer.buy_last_name }}</td>
+    </tr>
+  </tbody>
+  <tbody *ngIf="buyersList?.length == 0">
+    <tr>
+      <td colspan="3" class="no-data-available">No hay compradores en la base de datos!</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="container" [hidden]="ready">
+  <div>Cargando, un momento por favor ...</div>
+</div>
