@@ -1,1 +1,33 @@
-<p>tickets works!</p>
+
+<div class="container" [hidden]="!ready">
+<a class="btn btn-success add-tickets" href="/tickets/registration">Agregar</a>
+<div class="row m-4">
+  <div class="col"><h2>Listado de boletas</h2></div>
+</div>
+<table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="row-border hover">
+  <thead>
+    <tr>
+      <th>Nombre del evento</th>
+      <th>Cantidad inicial</th>
+      <th>Cantidad asignada</th>
+      <th>Asignar</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="ticketsList?.length != 0">
+    <tr *ngFor="let ticket of ticketsList">
+      <td>{{ ticket.tic_event_name }}</td>
+      <td>{{ ticket.tic_quantity }}</td>
+      <td>{{ ticket.tic_sold }}</td>
+      <td><a class="btn btn-primary" href="tickets/{{ ticket.id }}/selling">Asignar</a></td>
+    </tr>
+  </tbody>
+  <tbody *ngIf="ticketsList?.length == 0">
+    <tr>
+      <td colspan="3" class="no-data-available">No hay boletas en la base de datos!</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div class="container" [hidden]="ready">
+  <div>Cargando, un momento por favor ...</div>
+</div>
