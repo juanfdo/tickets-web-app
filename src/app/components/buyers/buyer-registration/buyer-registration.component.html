@@ -1,1 +1,72 @@
-<p>buyer-registration works!</p>
+<div class="container">
+  <div>
+    <h2>Registrar comprador.</h2>
+    <form [formGroup]="buyerForm" style="margin-top: 3%;" (ngSubmit)="onSubmit()">
+      <div class="row">
+
+        <!-- Número de identificación. -->
+        <div class="form-group col-12 col-lg-4">
+          <label for="buy_id_number">Número de identificación.</label>
+          <input type="number"
+            formControlName="buy_id_number"
+            class="form-control"
+            id="buy_id_number"
+            required
+            [ngClass]="{ 'is-invalid': submitted && f.buy_id_number.errors }"
+            [(ngModel)]="buyer.buy_id_number"
+            name="buy_id_number"
+            >
+          <div *ngIf="submitted && f.buy_id_number.errors"
+            class="invalid-feedback">
+            <div *ngIf="f.buy_id_number.errors.required">El número de identificación es requerido</div>
+            <div *ngIf="f.buy_id_number.errors.pattern">El número de identificación no es válido</div>
+            <div *ngIf="f.buy_id_number.errors.unique">El número de identificación ya se encuentra registrado en la base de datos.</div>
+          </div>
+        </div>
+
+        <!-- Nombre -->
+        <div class="form-group col-12 col-lg-4">
+          <label for="buy_first_name">Nombre.</label>
+          <input type="text"
+            formControlName="buy_first_name"
+            class="form-control"
+            id="buy_first_name"
+            required
+            [ngClass]="{ 'is-invalid': submitted && f.buy_first_name.errors }"
+            [(ngModel)]="buyer.buy_first_name"
+            name="buy_first_name"
+            >
+          <div *ngIf="submitted && f.buy_first_name.errors"
+            class="invalid-feedback">
+            <div *ngIf="f.buy_first_name.errors.required">El nombre es requerido</div>
+          </div>
+        </div>
+
+        <!-- Apellido -->
+        <div class="form-group col-12 col-lg-4">
+          <label for="buy_last_name">Apellido.</label>
+          <input type="text"
+            formControlName="buy_last_name"
+            class="form-control"
+            id="buy_last_name"
+            required
+            [ngClass]="{ 'is-invalid': submitted && f.buy_last_name.errors }"
+            [(ngModel)]="buyer.buy_last_name"
+            name="buy_last_name"
+            >
+          <div *ngIf="submitted && f.buy_last_name.errors"
+            class="invalid-feedback">
+            <div *ngIf="f.buy_last_name.errors.required">El apellido es requerido</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="center">
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <button type="button" class="btn btn-danger" (click)="cancel(); buyerForm.reset()">Cancelar</button>
+      </div>
+
+    </form>
+  </div>
+</div>
