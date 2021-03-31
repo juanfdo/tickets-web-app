@@ -1,1 +1,81 @@
-<p>ticket-selling works!</p>
+<div class="container">
+  <div>
+    <h2>Asignar boletas.</h2>
+    <form [formGroup]="ticketXBuyerForm" style="margin-top: 3%;" (ngSubmit)="onSubmit()">
+      <div class="row">
+
+        <!-- Nombre del evento. RO-->
+        <div class="form-group col-12 col-lg-6">
+          <label for="tic_event_name">Nombre del evento.</label>
+          <input type="text"
+            class="form-control"
+            id="tic_event_name"
+            [ngModel]="ticket.tic_event_name"
+            [ngModelOptions]="{standalone: true}"
+            name="tic_event_name"
+            disabled="true"
+            >
+        </div>
+
+        <!-- Cantidad disponible. RO-->
+        <div class="form-group col-12 col-lg-6">
+          <label for="available_quantity">Cantidad disponible.</label>
+          <input type="text"
+            class="form-control"
+            id="available_quantity"
+            [ngModel]="availableTickets.available_quantity"
+            [ngModelOptions]="{standalone: true}"
+            name="available_quantity"
+            disabled="true"
+            >
+        </div>
+
+        <!-- Comprador. RW-->
+        <div class="form-group col-12 col-lg-6">
+          <label for="txb_buyer_id">Comprador.</label>
+          <ng-select2
+            [data]="select2Data"
+            [options]="options"
+            [placeholder]="'Seleccione el comprador.'"
+            [width]="250"
+            formControlName="txb_buyer_id"
+            class="form-control"
+            id="txb_buyer_id"
+            [ngClass]="{ 'is-invalid': submitted && f.txb_buyer_id.errors }"
+            [(ngModel)]="ticketXBuyer.txb_buyer_id"
+            name="txb_buyer_id"></ng-select2>
+          <div *ngIf="submitted && f.txb_buyer_id.errors"
+            class="invalid-feedback">
+            <div *ngIf="f.txb_buyer_id.errors.required">El comprador es requerido</div>
+          </div>
+        </div>
+
+        <!-- Cantidad de boletas. RW-->
+        <div class="form-group col-12 col-lg-6">
+          <label for="txb_quantity">Cantidad a asignar.</label>
+          <input type="number"
+            formControlName="txb_quantity"
+            class="form-control"
+            id="txb_quantity"
+            required
+            [ngClass]="{ 'is-invalid': submitted && f.txb_quantity.errors }"
+            [(ngModel)]="ticketXBuyer.txb_quantity"
+            name="txb_quantity"
+            >
+          <div *ngIf="submitted && f.txb_quantity.errors"
+            class="invalid-feedback">
+            <div *ngIf="f.txb_quantity.errors.required">La cantidad de boletas es requerida</div>
+            <div *ngIf="f.txb_quantity.errors.not_available">La cantidad de boletas no está disponible</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="center">
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <button type="button" class="btn btn-danger" (click)="cancel(); ticketXBuyerForm.reset()">Cancelar</button>
+      </div>
+
+    </form>
+  </div>
+</div>
