@@ -1,0 +1,14 @@
+h2{
+  text-align: center;
+}
+
+div.row{
+  text-align: center;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10em;
+}
