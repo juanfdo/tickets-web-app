@@ -1,1 +1,54 @@
-<p>ticket-registration works!</p>
+<div class="container">
+  <div>
+    <h2>Registrar boletas.</h2>
+    <form [formGroup]="ticketForm" style="margin-top: 3%;" (ngSubmit)="onSubmit()">
+      <div class="row">
+
+        <!-- Nombre del evento. -->
+        <div class="form-group col-12 col-lg-6">
+          <label for="tic_event_name">Nombre del evento.</label>
+          <input type="text"
+            formControlName="tic_event_name"
+            class="form-control"
+            id="tic_event_name"
+            required
+            [ngClass]="{ 'is-invalid': submitted && f.tic_event_name.errors }"
+            [(ngModel)]="ticket.tic_event_name"
+            name="tic_event_name"
+            >
+          <div *ngIf="submitted && f.tic_event_name.errors"
+            class="invalid-feedback">
+            <div *ngIf="f.tic_event_name.errors.required">El nombre del evento es requerido</div>
+            <div *ngIf="f.tic_event_name.errors.pattern">El nombre del evento no es válido</div>
+            <div *ngIf="f.tic_event_name.errors.unique">El nombre del evento ya se encuentra registrado en la base de datos.</div>
+          </div>
+        </div>
+
+        <!-- Cantidad de boletas. -->
+        <div class="form-group col-12 col-lg-6">
+          <label for="tic_quantity">Cantidad de boletas.</label>
+          <input type="number"
+            formControlName="tic_quantity"
+            class="form-control"
+            id="tic_quantity"
+            required
+            [ngClass]="{ 'is-invalid': submitted && f.tic_quantity.errors }"
+            [(ngModel)]="ticket.tic_quantity"
+            name="tic_quantity"
+            >
+          <div *ngIf="submitted && f.tic_quantity.errors"
+            class="invalid-feedback">
+            <div *ngIf="f.tic_quantity.errors.required">La cantidad de boletas es requerida</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="center">
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <button type="button" class="btn btn-danger" (click)="cancel(); ticketForm.reset()">Cancelar</button>
+      </div>
+
+    </form>
+  </div>
+</div>
